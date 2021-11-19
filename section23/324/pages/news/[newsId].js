@@ -1,0 +1,9 @@
+// our-domain.com/news/important
+
+const DetailPage = () => {
+  return (
+    <h1>The Detail Page</h1>
+  );
+};
+
+export default DetailPage;
