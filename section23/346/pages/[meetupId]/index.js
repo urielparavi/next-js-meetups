@@ -68,16 +68,7 @@ export async function getStaticPaths() {
     // is a nice feature, because it allows us to pre-generated some of our pages for specific meetupId values - for example the
     // pages which are visited most frequently, and then pre-generate the missing ones dynamically when requests for them are 
     //coming in
-
-    //blocking => when we set fallback to true or blocking, we're telling NextJS that the list of paths which we're specifiyng
-    //here, might not be exhaustive - there might be more valid pages, and therefore when fallback is set to true or to blocking
-    //NextJS will not respond with a 404 page if it can't find the page immediately. Instead, with fallback set to true or
-    //blocking, it will then generate that page on demand, and thereafter cache it, so it will pre-generate it when needed. Now
-    //the difference between true and blocking, then is that with true, it would immediately return an empty page and then pull
-    //down the dynamically generated content once that's done, so we need to handle that case that the page does not have the
-    //data yet. With blocking, the user will not see anything until the page was pre-generated and the finished page will be served,
-    //and that's the approach I will use here, since it doesn't require any other extra work from our side
-    fallback: 'blocking',
+    fallback: false,
     //We can use meetups here, and then map every meetup item, which is a document with an id into an object, because paths 
     //should be an array of objects where every object has this params key, and then we have a nested object in there where we
     //define our meetupId values. And the values for meetupId should now be our IDs here, so here we can access meetup, so this 
